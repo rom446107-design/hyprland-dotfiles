@@ -24,4 +24,4 @@ for name in hypr rofi waybar; do
     echo "  $dest -> $root/$name"
 done
 
-echo "Готово: симлинки на $root/$name созданы"
+echo "Готово: симлинки ~/.config/{hypr,rofi,waybar} -> $root созданы"

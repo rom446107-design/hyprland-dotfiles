@@ -11,7 +11,7 @@ root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cfg="${XDG_CONFIG_HOME:-$HOME/.config}"
 mkdir -p "$cfg"
 
-for name in hypr rofi waybar; do
+for name in hypr rofi foot waybar; do
     dest="$cfg/$name"
     if [[ -e "$dest" && ! -L "$dest" ]]; then
         backup="$dest.bak.$(date +%Y%m%d-%H%M%S)"

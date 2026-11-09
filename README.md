@@ -15,7 +15,8 @@
 | Hyprland 0.56+       | `hypr/hyprland.lua`         | конфиг **на Lua** (не hyprlang): мониторы, окна, воркспейсы, бинды, blur |
 | Rofi                 | `rofi/config.rasi`<br>`rofi/themes/graphite.rasi` | лаунчер приложений, меню обоев, эмодзи, питание в одной теме |
 | Waybar               | `waybar/config.jsonc`<br>`waybar/style.css` | воркспейсы, раскладка, часы, звук, сеть, питание, яркость, батарея |
-| Установка            | `install.sh`                | симлинки `~/.config/{hypr,rofi,waybar}` → этот репозиторий |
+| foot                 | `foot/foot.ini`             | терминал в той же палитре: фон `#181818`, текст `#e6e6e6`, акцент `#9a9a9a`, лёгкая прозрачность + blur |
+| Установка            | `install.sh`                | симлинки `~/.config/{hypr,rofi,foot,waybar}` → этот репозиторий |
 
 ## Горячие клавиши
 
@@ -43,7 +44,7 @@ cd hyprland-dotfiles
 | `hyprland`              | композитор (Wayland) |
 | `waybar`, `rofi`        | бар и лаунчер |
 | `swaybg`                | обои |
-| `foot`                  | терминал (используется в Waybar для сети) |
+| `foot`                  | терминал (тема в `foot/foot.ini`) |
 | `power-profiles-daemon` | управление профилями питания |
 | `brightnessctl`         | регулировка яркости |
 | `pavucontrol`           | GUI для Pipewire-звука |

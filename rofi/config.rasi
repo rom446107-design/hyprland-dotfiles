@@ -1,0 +1,34 @@
+/*
+ * Rofi — основной конфиг
+ * Базовая тема: ~/.config/rofi/themes/graphite.rasi
+ */
+
+/* Базовая тема. Побеждает последняя строка @theme в файле,
+ * поэтому тема, дописанная ниже (rofi-theme-selector),
+ * переопределит оформление. */
+@theme "graphite"
+
+configuration {
+    /* Режимы, доступные через -show */
+    modi: "drun,run,window";
+
+    /* Иконки приложений и обоев */
+    show-icons: true;
+    icon-theme: "Adwaita";
+
+    font: "JetBrainsMono Nerd Font 11";
+    terminal: "foot";
+
+    /* Внешний вид списка приложений */
+    drun-display-format: "{name}";
+    drun-show-actions: false;
+    display-drun: "Приложения";
+    display-run: "Команды";
+    display-window: "Окна";
+
+    /* Поиск */
+    sorting-method: "fzf";
+    case-smart: true;
+    cycle: true;
+    hover-select: true;
+}

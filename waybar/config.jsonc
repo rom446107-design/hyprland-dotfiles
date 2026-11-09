@@ -1,0 +1,136 @@
+// Waybar — графитовая тема в стиле Rofi
+// Палитра: фон #181818, текст #e6e6e6, акцент #9a9a9a
+
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 6,
+    "exclusive": true,
+    "ipc": true,
+    "reload_style_on_change": true,
+
+    "margin-top": 8,
+    "margin-right": 20,
+    "margin-bottom": 0,
+    "margin-left": 20,
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces",
+        "hyprland/language"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "network",
+        "power-profiles-daemon",
+        "backlight",
+        "battery",
+        "custom/power"
+    ],
+
+    "custom/launcher": {
+        "format": "\uf009",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "all-outputs": true,
+        "disable-scroll": true,
+        "persistent-workspaces": {
+            "*": 5
+        },
+        "on-click": "activate"
+    },
+
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "EN",
+        "format-ru": "RU"
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%d.%m.%Y}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 1,
+            "weeks-pos": "right"
+        }
+    },
+
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "\uf026",
+        "format-icons": {
+            "default": ["\uf026", "\uf027", "\uf028"]
+        },
+        "scroll-step": 2,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+
+    "network": {
+        "interval": 3,
+        "format-wifi": "\uf1eb",
+        "format-ethernet": "\uf1e6",
+        "format-disconnected": "\uf05e",
+        "tooltip-format-wifi": "{essid} · {signalStrength}%\n{ipaddr}",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+        "tooltip-format-disconnected": "Нет подключения",
+        "on-click": "foot -e nmtui"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "{profile}",
+        "format-icons": {
+            "performance": "\uf0e7",
+            "balanced": "\uf24e",
+            "power-saver": "\uf186"
+        }
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}",
+        "tooltip-format": "{percent}%",
+        "format-icons": ["\uf186", "\uf185"],
+        "scroll-step": 5
+    },
+
+    "battery": {
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "\uf0e7 {capacity}%",
+        "format-plugged": "\uf1e6 {capacity}%",
+        "format-full": "\uf240 {capacity}%",
+        "format-icons": {
+            "default": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
+        },
+        "tooltip-format": "{timeTo}",
+        "on-click": "~/.config/rofi/scripts/powermenu.sh"
+    },
+
+    "custom/power": {
+        "format": "\uf011",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/scripts/powermenu.sh"
+    }
+}

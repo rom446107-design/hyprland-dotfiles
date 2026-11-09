@@ -1,0 +1,141 @@
+/*
+ * Rofi — тёмная тема «Graphite»
+ * Монохромная палитра под серые рамки Hyprland.
+ */
+
+* {
+    /* ── Палитра (графит + серый акцент) ─────────────────── */
+    bg:          #181818d4;
+    bg-alt:      #262626;
+    fg:          #e6e6e6;
+    fg-muted:    #7d7d7d;
+    accent:      #9a9a9a;
+    accent-dim:  #9a9a9a4d;
+    urgent:      #c26a6a;
+    ok:          #93a893;
+
+    /* ── Базовые настройки ───────────────────────────────── */
+    background-color: transparent;
+    text-color:       @fg;
+    font:             "JetBrainsMono Nerd Font 11";
+    spacing:          0;
+    margin:           0;
+    padding:          0;
+    border:           0;
+}
+
+/* ── Окно ─────────────────────────────────────────────── */
+window {
+    width:            580px;
+    padding:          14px;
+    border:           2px;
+    border-color:     @accent-dim;
+    border-radius:    20px;
+    background-color: @bg;
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    spacing:  12px;
+    padding:  0;
+}
+
+/* ── Строка поиска ────────────────────────────────────── */
+inputbar {
+    children:         [prompt, entry];
+    background-color: @bg-alt;
+    border-radius:    12px;
+    padding:          12px 16px;
+    spacing:          12px;
+}
+
+prompt {
+    text-color: @accent;
+    font:       "JetBrainsMono Nerd Font Bold 11";
+}
+
+entry {
+    placeholder:       "Введите запрос…";
+    placeholder-color: @fg-muted;
+    cursor:            text;
+    text-color:        @fg;
+}
+
+/* ── Список ───────────────────────────────────────────── */
+listview {
+    lines:            8;
+    columns:          1;
+    spacing:          4px;
+    scrollbar:        false;
+    fixed-height:     false;
+    padding:          0;
+    background-color: transparent;
+}
+
+element {
+    padding:       10px 14px;
+    border-radius: 10px;
+    spacing:       12px;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @accent-dim;
+    text-color:       @fg;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color:       @bg;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}
+
+/* ── Сообщение под списком ────────────────────────────── */
+message {
+    background-color: @bg-alt;
+    border-radius:    10px;
+    padding:          8px 12px;
+    text-color:       @fg-muted;
+}
+
+/* ── Переключатель режимов ────────────────────────────── */
+mode-switcher {
+    spacing: 8px;
+}
+
+button {
+    padding:          8px 14px;
+    border-radius:    10px;
+    background-color: @bg-alt;
+    text-color:       @fg-muted;
+}
+
+button selected {
+    background-color: @accent-dim;
+    text-color:       @fg;
+}
+
+/* ── Скроллбар (на случай включения) ──────────────────── */
+scrollbar {
+    width:        4px;
+    handle-width: 4px;
+    handle-color: @accent;
+    background-color: transparent;
+}

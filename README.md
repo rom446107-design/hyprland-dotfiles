@@ -10,7 +10,7 @@
 ## Установка
 
 ```bash
-git clone https://github.com/<username>/dotfiles.git
+git clone https://github.com/rom446107-design/hyprland-dotfiles.git
 cd dotfiles
 ./install.sh
 ```

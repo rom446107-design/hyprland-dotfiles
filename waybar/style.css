@@ -103,6 +103,31 @@ window#waybar {
 }
 
 /* ── Состояния ──────────────────────────────────────────── */
+#pulseaudio {
+    padding: 0 8px;
+}
+
+/* ползунок громкости: дорожка + залитая часть + ручка в палитре */
+#pulseaudio-slider {
+    padding: 4px 6px;
+}
+#pulseaudio-slider trough {
+    background-color: #2e2e2e;
+    min-height: 6px;
+    min-width: 90px;
+    border-radius: 3px;
+}
+#pulseaudio-slider highlight {
+    background-color: #9a9a9a;
+    border-radius: 3px;
+}
+#pulseaudio-slider slider {
+    background-color: #e6e6e6;
+    min-height: 6px;
+    min-width: 6px;
+    border-radius: 50%;
+}
+
 #pulseaudio.muted {
     color: #7d7d7d;
 }

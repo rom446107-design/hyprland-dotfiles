@@ -21,7 +21,6 @@
         "hyprland/language"
     ],
     "modules-center": [
-        "custom/cava",
         "clock"
     ],
     "modules-right": [
@@ -54,12 +53,6 @@
         "format": "{}",
         "format-en": "EN",
         "format-ru": "RU"
-    },
-
-    "custom/cava": {
-        "return-type": "json",
-        "exec": "~/.config/waybar/cava.sh",
-        "restart-interval": 3
     },
 
     "clock": {

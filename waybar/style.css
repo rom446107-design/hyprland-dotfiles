@@ -82,6 +82,14 @@ window#waybar {
     min-width: 26px;
 }
 
+/* ── Визуализация музыки (cava) ──────────────────────────── */
+#custom-cava {
+    color: #9a9a9a;
+    letter-spacing: 1px;
+    font-weight: 600;
+    min-width: 120px;
+}
+
 #custom-launcher {
     color: #9a9a9a;
     font-size: 14px;

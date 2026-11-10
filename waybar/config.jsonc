@@ -18,8 +18,7 @@
     "modules-left": [
         "custom/launcher",
         "hyprland/workspaces",
-        "hyprland/language",
-        "keyboard-state"
+        "hyprland/language"
     ],
     "modules-center": [
         "clock"
@@ -55,17 +54,6 @@
         "format": "{}",
         "format-en": "EN",
         "format-ru": "RU"
-    },
-
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "scrolllock": false,
-        "format": "{icon}",
-        "format-icons": {
-            "locked": "●",
-            "unlocked": ""
-        }
     },
 
     "clock": {

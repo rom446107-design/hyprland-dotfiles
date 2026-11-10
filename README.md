@@ -3,6 +3,10 @@
     <img src=".github/rofi.png" alt="Rofi" width="320"/>
 </p>
 
+<p align="center">
+    <img src=".github/desktop.png" alt="Рабочий стол" width="640"/>
+</p>
+
 # hyprland-dotfiles · Hyprland + Rofi + Waybar
 
 Лёгкая графитовая конфигурация рабочего стола на **CachyOS** для ноутбука 1366×768.

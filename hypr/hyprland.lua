@@ -396,6 +396,13 @@ hl.layer_rule({
     ignore_alpha = 0.2,
 })
 
+-- Собственная анимация Rofi: въезд снизу с лёгким затуханием
+hl.layer_rule({
+    name       = "rofi-anim",
+    match      = { namespace = "^rofi$" },
+    animation  = "slidefadeup",
+})
+
 -- Размытие фона под Waybar
 hl.layer_rule({
     name         = "waybar-blur",

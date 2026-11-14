@@ -1,6 +1,7 @@
 <p align="center">
     <img src=".github/bar.png" alt="Waybar" width="640"/><br/>
     <img src=".github/rofi.png" alt="Rofi" width="320"/>
+    <img src=".github/keybinds.png" alt="Окно хоткеев" width="320"/>
 </p>
 
 <p align="center">

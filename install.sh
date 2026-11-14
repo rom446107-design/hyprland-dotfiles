@@ -3,15 +3,16 @@
 #
 #   ./install.sh
 #
-# Каталоги hypr, rofi, waybar связываются симлинками; существующие
-# каталоги, если их нет в репозитории, переименовываются в *.bak.<дата>.
+# Каталоги hypr, rofi, waybar, kitty, polybar, sptlrx связываются симлинками;
+# существующие каталоги, если их нет в репозитории, переименовываются в *.bak.<дата>.
+# ~/.Xresources копируется (шрифт/DPI).
 set -euo pipefail
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cfg="${XDG_CONFIG_HOME:-$HOME/.config}"
 mkdir -p "$cfg"
 
-for name in hypr rofi foot waybar; do
+for name in hypr rofi foot waybar kitty polybar sptlrx; do
     dest="$cfg/$name"
     if [[ -e "$dest" && ! -L "$dest" ]]; then
         backup="$dest.bak.$(date +%Y%m%d-%H%M%S)"
@@ -24,4 +25,10 @@ for name in hypr rofi foot waybar; do
     echo "  $dest -> $root/$name"
 done
 
-echo "Готово: симлинки ~/.config/{hypr,rofi,waybar} -> $root созданы"
+# Шрифт/DPI для X11-приложений (xpdf, старые программы)
+if [[ -f "$root/Xresources" ]]; then
+    cp "$root/Xresources" "$HOME/.Xresources"
+    echo "  $HOME/.Xresources обновлён"
+fi
+
+echo "Готово: симлинки ~/.config/{hypr,rofi,waybar,kitty,polybar,sptlrx} -> $root созданы"

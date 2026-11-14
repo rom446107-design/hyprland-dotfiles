@@ -1,0 +1,6 @@
+! DPI под матрицу 1366x768 / 344x193мм (~101)
+Xft.dpi: 101
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.hintstyle: hintslight
+Xft.rgba: rgb

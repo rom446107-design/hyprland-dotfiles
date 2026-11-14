@@ -17,7 +17,7 @@ configuration {
     icon-theme: "Adwaita";
 
     font: "JetBrainsMono Nerd Font 11";
-    terminal: "foot";
+    terminal: "kitty";
 
     /* Внешний вид списка приложений */
     drun-display-format: "{name}";

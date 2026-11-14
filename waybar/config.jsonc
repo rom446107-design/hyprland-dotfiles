@@ -28,6 +28,7 @@
         "pulseaudio/slider",
         "pulseaudio",
         "network",
+        "privacy",
         "power-profiles-daemon",
         "backlight",
         "battery",
@@ -96,7 +97,32 @@
         "tooltip-format-wifi": "{essid} · {signalStrength}%\n{ipaddr}",
         "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
         "tooltip-format-disconnected": "Нет подключения",
-        "on-click": "foot -e nmtui"
+        "on-click": "kitty -e nmtui"
+    },
+
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 14,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "microphone",
+                "tooltip": "Микрофон используется",
+                "unclicked-icon": "\uf130",
+                "clicked-icon": "\uf131",
+                "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+            },
+            {
+                "type": "screenshare",
+                "tooltip": "Экран транслируется",
+                "unclicked-icon": "\uf03d"
+            },
+            {
+                "type": "camera",
+                "tooltip": "Камера активна",
+                "unclicked-icon": "\uf03d"
+            }
+        ]
     },
 
     "power-profiles-daemon": {

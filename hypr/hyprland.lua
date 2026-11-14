@@ -35,7 +35,7 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-local terminal = "foot"
+local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "rofi -show drun"
 
@@ -57,12 +57,11 @@ local menu = "rofi -show drun"
 --   h1.env("HYPERCURSOR_SIZE", "24")
 -- end)
 
--- Восстановить последние обои при запуске
+-- Восстановить последние обои при запуске (общий скрипт с bspwm)
 hl.on("hyprland.start", function()
-    hl.exec_cmd("swaybg -i /home/rork/Изображения/Wallpapers/wp15566575-hyprland-wallpapers.png -m fill")
+    hl.exec_cmd("~/.config/rofi/scripts/wallpaper.sh --restore")
     hl.exec_cmd("waybar")
 end)
-
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -329,6 +328,12 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Rofi: обои / эмодзи / питание
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("~/.config/rofi/scripts/wallpaper.sh"))
+
+-- Текст песен (эстетик-режим sptlrx)
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("~/.local/bin/lyrics"))
+
+-- Окно со списком всех хоткеев
+hl.bind(mainMod .. " + SHIFT + SLASH", hl.dsp.exec_cmd("~/.config/rofi/scripts/keybinds.sh"))
 hl.bind(mainMod .. " + period",    hl.dsp.exec_cmd("~/.config/rofi/scripts/emoji.sh"))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("~/.config/rofi/scripts/powermenu.sh"))
 
@@ -395,6 +400,15 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+-- Текст песен: плавающее прозрачное окно по центру (см. ~/.local/bin/lyrics)
+hl.window_rule({
+    name   = "lyrics-float",
+    match  = { class = "sptlrx" },
+    float  = true,
+    center = true,
+    size   = "600 440",
 })
 
 -- Размытие фона под Rofi (красивый «стеклянный» эффект)

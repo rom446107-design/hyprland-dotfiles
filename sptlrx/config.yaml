@@ -1,0 +1,49 @@
+player: mpris
+ignoreErrors: true
+timerInterval: 200
+updateInterval: 2000
+style:
+  hAlignment: center
+  before:
+    background: ""
+    foreground: "7d7d7d"
+    bold: false
+    italic: false
+    underline: false
+    strikethrough: false
+    blink: false
+    faint: true
+  current:
+    background: ""
+    foreground: "e6e6e6"
+    bold: true
+    italic: false
+    underline: false
+    strikethrough: false
+    blink: false
+    faint: false
+  after:
+    background: ""
+    foreground: "3a3a3a"
+    bold: false
+    italic: false
+    underline: false
+    strikethrough: false
+    blink: false
+    faint: true
+pipe:
+  length: 0
+  overflow: word
+mpd:
+  address: 127.0.0.1:6600
+  password: ""
+mopidy:
+  address: 127.0.0.1:6680
+mpris:
+  # Только Spotify: иначе sptlrx цепляет первого плеера в системе
+  # (например, chromium с открытой вкладкой) и молча не находит текст
+  players: ["spotify"]
+browser:
+  port: 8974
+local:
+  folder: ""

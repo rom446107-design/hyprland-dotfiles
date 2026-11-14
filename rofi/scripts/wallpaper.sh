@@ -1,18 +1,39 @@
 #!/usr/bin/env bash
-# Обои через Rofi (swaybg): выбор картинки + запоминание последнего выбора.
+# Обои через Rofi: выбор картинки + запоминание последнего выбора.
 #   wallpaper.sh             — открыть меню
 #   wallpaper.sh --restore   — восстановить последние обои (для автозапуска)
+#
+# Установка обоев: swaybg под Wayland (Hyprland), feh под X11 (bspwm).
+# Вид окна — как у всех остальных: тема graphite из config.rasi, без переопределений.
 set -euo pipefail
 
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}"
 STATE_FILE="$STATE_DIR/rofi-wallpaper"
 
+apply_wallpaper() {
+    if [[ -n "${WAYLAND_DISPLAY:-}" ]]; then
+        # Wayland
+        if ! command -v swaybg >/dev/null; then
+            notify-send -a "Rofi" "Обои" "Не найден swaybg" 2>/dev/null || true
+            return 1
+        fi
+        pkill -x swaybg 2>/dev/null || true
+        setsid swaybg -i "$1" -m fill >/dev/null 2>&1 &
+    else
+        # X11 (bspwm)
+        if ! command -v feh >/dev/null; then
+            notify-send -a "Rofi" "Обои" "Не найден feh — установите: sudo pacman -S feh" 2>/dev/null || true
+            return 1
+        fi
+        feh --bg-fill "$1"
+    fi
+}
+
 if [[ "${1:-}" == "--restore" ]]; then
     if [[ -f "$STATE_FILE" ]]; then
         last=$(<"$STATE_FILE")
         if [[ -f "$last" ]]; then
-            pkill -x swaybg 2>/dev/null || true
-            setsid swaybg -i "$last" -m fill >/dev/null 2>&1 &
+            apply_wallpaper "$last"
         fi
     fi
     exit 0
@@ -53,11 +74,27 @@ for f in "${files[@]}"; do
     items+=("$label")
 done
 
+# Превью: rofi зовёт preview-cmd с текстом строки и ждёт путь к картинке
+mapfile=$(mktemp)
+preview=$(mktemp)
+trap 'rm -f "$mapfile" "$preview"' EXIT
+: >"$mapfile"
+for label in "${!paths[@]}"; do
+    printf '%s\t%s\n' "$label" "${paths[$label]}" >>"$mapfile"
+done
+cat >"$preview" <<EOF
+#!/bin/sh
+awk -F'\t' -v l="\$1" '\$1 == l {print \$2; exit}' "$mapfile" || true
+EOF
+chmod +x "$preview"
+
+# Вид окна идентичен остальным, но с превью обоев
 choice=$(
     printf '%s\n' "${items[@]}" |
         rofi -dmenu -i -p "Обои" \
             -mesg "Enter — применить, Esc — отмена" \
-            -theme-str 'window { width: 720px; } listview { lines: 8; } element-icon { size: 96px; } element { padding: 6px; }'
+            -preview-cmd "$preview" \
+            -theme-str 'window { width: 500px; } listview { lines: 6; } element-icon { size: 56px; } element { padding: 4px; spacing: 10px; }'
 ) || exit 0
 
 [[ -n "$choice" && -n "${paths[$choice]:-}" ]] || exit 0
@@ -66,5 +103,4 @@ path=${paths[$choice]}
 mkdir -p "$STATE_DIR"
 printf '%s\n' "$path" >"$STATE_FILE"
 
-pkill -x swaybg 2>/dev/null || true
-setsid swaybg -i "$path" -m fill >/dev/null 2>&1 &
+apply_wallpaper "$path"

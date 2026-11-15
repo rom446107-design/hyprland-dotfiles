@@ -1,17 +1,29 @@
 #!/usr/bin/env bash
-# Меню питания для Rofi
+# Меню питания для Rofi — крупные значки в горизонтальный ряд
 set -euo pipefail
 
 choice=$(
-    printf '\uf011   Выключить\n\uf021   Перезагрузить\n\uf186   Спящий режим\n\uf08b   Выйти из сеанса\n' |
+    printf '\uf011\n\uf021\n\uf186\n\uf08b\n' |
         rofi -dmenu -i -p "Питание" \
             -mesg "Enter — выполнить, Esc — отмена" \
-            -theme-str 'listview { lines: 4; } window { width: 380px; } inputbar { padding: 10px 14px; }'
+            -theme-str '
+mainbox   { children: [inputbar, listview, message]; spacing: 12px; }
+inputbar  { children: [prompt]; }
+window    { width: 500px; }
+listview  { lines: 1; columns: 4; spacing: 8px; fixed-height: false; scrollbar: false; }
+element   { padding: 22px 0px; border-radius: 14px; }
+element-text {
+    font:             "JetBrainsMono Nerd Font 30";
+    vertical-align:   0.5;
+    horizontal-align: 0.5;
+}
+element selected.normal { background-color: @accent-dim; }
+'
 ) || exit 0
 
 case "$choice" in
-    *Выключить*)     systemctl poweroff ;;
-    *Перезагрузить*) systemctl reboot ;;
-    *Спящий*)        systemctl suspend ;;
-    *Выйти*)         hyprctl dispatch exit ;;
+    *$'\uf011'*)     systemctl poweroff ;;
+    *$'\uf021'*)     systemctl reboot ;;
+    *$'\uf186'*)     systemctl suspend ;;
+    *$'\uf08b'*)     hyprctl dispatch exit ;;
 esac

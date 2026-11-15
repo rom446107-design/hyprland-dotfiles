@@ -24,5 +24,10 @@ case "$choice" in
     *$'\uf011'*)     systemctl poweroff ;;
     *$'\uf021'*)     systemctl reboot ;;
     *$'\uf186'*)     systemctl suspend ;;
-    *$'\uf08b'*)     hyprctl dispatch exit ;;
+    *$'\uf08b'*)     # Выход: shim не знает диспетчер «exit», нужен Lua-вызов
+        if command -v hyprshutdown >/dev/null 2>&1; then
+            hyprshutdown
+        else
+            hyprctl dispatch 'hl.dsp.exit()'
+        fi ;;
 esac

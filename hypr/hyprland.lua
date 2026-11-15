@@ -337,6 +337,10 @@ hl.bind(mainMod .. " + SHIFT + SLASH", hl.dsp.exec_cmd("~/.config/rofi/scripts/k
 
 -- Wi-Fi меню (nmcli: подключение, отключение, вкл/выкл)
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("~/.config/rofi/scripts/wifi.sh"))
+
+-- Приложения: Chromium / Telegram
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("chromium"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("Telegram"))
 hl.bind(mainMod .. " + period",    hl.dsp.exec_cmd("~/.config/rofi/scripts/emoji.sh"))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("~/.config/rofi/scripts/powermenu.sh"))
 

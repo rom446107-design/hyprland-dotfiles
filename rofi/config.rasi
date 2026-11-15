@@ -16,7 +16,7 @@ configuration {
     show-icons: true;
     icon-theme: "Adwaita";
 
-    font: "JetBrainsMono Nerd Font 11";
+    font: "Mononoki Nerd Font 11";
     terminal: "kitty";
 
     /* Внешний вид списка приложений */

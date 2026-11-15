@@ -21,7 +21,7 @@
     /* ── Базовые настройки ───────────────────────────────── */
     background-color: transparent;
     text-color:       @fg;
-    font:             "JetBrainsMono Nerd Font 10";
+    font:             "Mononoki Nerd Font 10";
     spacing:          0;
     margin:           0;
     padding:          0;

@@ -6,7 +6,7 @@ set -euo pipefail
 
 python3 <<'PY' | rofi -dmenu -i -p "Хоткеи Hyprland" \
     -mesg "Живой список из hyprctl binds · Esc — закрыть" \
-    -theme-str '* { font: "JetBrainsMono Nerd Font 9"; } listview { lines: 11; } window { width: 520px; }' >/dev/null || true
+    -theme-str '* { font: "Mononoki Nerd Font 9"; } listview { lines: 11; } window { width: 520px; }' >/dev/null || true
 
 import json
 import subprocess

@@ -17,7 +17,7 @@
     /* ── Базовые настройки ───────────────────────────────── */
     background-color: transparent;
     text-color:       @fg;
-    font:             "JetBrainsMono Nerd Font 11";
+    font:             "Mononoki Nerd Font 11";
     spacing:          0;
     margin:           0;
     padding:          0;
@@ -55,7 +55,7 @@ inputbar {
 
 prompt {
     text-color: @accent;
-    font:       "JetBrainsMono Nerd Font Bold 11";
+    font:       "Mononoki Nerd Font Bold 11";
 }
 
 entry {

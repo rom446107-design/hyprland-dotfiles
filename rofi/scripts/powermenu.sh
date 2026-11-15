@@ -12,7 +12,7 @@ window    { width: 500px; }
 listview  { lines: 1; columns: 4; spacing: 8px; fixed-height: false; scrollbar: false; }
 element   { children: [element-text]; padding: 24px 0px; border-radius: 14px; }
 element-text {
-    font:             "JetBrainsMono Nerd Font 30";
+    font:             "Mononoki Nerd Font 30";
     vertical-align:   0.5;
     horizontal-align: 0.5;
 }

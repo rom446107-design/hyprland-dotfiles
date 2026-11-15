@@ -20,11 +20,16 @@ for emoji, names in data.items():
 PY
         rofi -dmenu -i -p "Эмодзи" \
             -mesg "Enter — скопировать в буфер, Esc — закрыть" \
-            -theme-str 'listview { lines: 9; } window { width: 520px; }'
+            -theme-str 'mainbox { children: [listview, message]; } listview { lines: 9; } window { width: 520px; }'
 ) || exit 0
 
 [[ -n "$selection" ]] || exit 0
 
 emoji=${selection%% *}
-printf '%s' "$emoji" | wl-copy
+# Буфер обмена: wl-copy под Wayland, xclip под X11 (bspwm)
+if [[ -n "${WAYLAND_DISPLAY:-}" ]]; then
+    printf '%s' "$emoji" | wl-copy
+else
+    printf '%s' "$emoji" | xclip -selection clipboard
+fi
 notify-send -a "Rofi" "Эмодзи скопирован" "$emoji"

@@ -94,7 +94,7 @@ choice=$(
         rofi -dmenu -i -p "Обои" \
             -mesg "Enter — применить, Esc — отмена" \
             -preview-cmd "$preview" \
-            -theme-str 'window { width: 500px; } listview { lines: 6; } element-icon { size: 56px; } element { padding: 4px; spacing: 10px; }'
+            -theme-str 'mainbox { children: [listview, message]; } window { width: 500px; } listview { lines: 6; } element-icon { size: 56px; } element { padding: 4px; spacing: 10px; }'
 ) || exit 0
 
 [[ -n "$choice" && -n "${paths[$choice]:-}" ]] || exit 0

@@ -334,6 +334,9 @@ hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("~/.local/bin/lyrics"))
 
 -- Окно со списком всех хоткеев
 hl.bind(mainMod .. " + SHIFT + SLASH", hl.dsp.exec_cmd("~/.config/rofi/scripts/keybinds.sh"))
+
+-- Wi-Fi меню (nmcli: подключение, отключение, вкл/выкл)
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("~/.config/rofi/scripts/wifi.sh"))
 hl.bind(mainMod .. " + period",    hl.dsp.exec_cmd("~/.config/rofi/scripts/emoji.sh"))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("~/.config/rofi/scripts/powermenu.sh"))
 
